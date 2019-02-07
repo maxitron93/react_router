@@ -26,12 +26,27 @@ const About = () => (
 )
 
 // Example Help Component
-const Help = () => (
-  <div>
-    <h2>Help</h2>
-    <p>If you have any problems, refer to the <a href="https://reacttraining.com/react-router/web/guides/philosophy">React Router Documentation</a> for more information</p>
-  </div>
-)
+const Help = (props) => {
+  console.log(props) // React Router passes in a lot of props to the component by default
+  console.log(props.location) // props.location is where to get access to the pathname and query strings
+  return (
+    <div>
+      <h2>Help</h2>
+      <p>If you have any problems, refer to the <a href="https://reacttraining.com/react-router/web/guides/philosophy">React Router Documentation</a> for more information</p>
+    </div>
+  )
+}
+
+// Example Expense Component to demonstrate dynamic urls
+const Expense = (props) => {
+  console.log(props.match.params) // this is where to access the expense id
+  return (
+    <div>
+      <h2>Expense</h2>
+      <p>Example of dyamic urls. ID of {props.match.params.id}</p>
+    </div>
+  )
+}
 
 const AppRouter = () => (
   // <BrowserRouter> is a <Router> that uses the HTML5 history API (pushState, replaceState and the popstate event) to keep your UI in sync with the URL.
@@ -45,6 +60,7 @@ const AppRouter = () => (
         <li><Link to="/">Home</Link></li>
         <li><Link to="/about">About</Link></li>
         <li><Link to="/help">Help</Link></li>
+        <li><Link to={`/expense/${Math.round(Math.random() * 100)}`}>Expenses</Link></li> {/* Example of how to do a dynamic link */}
       </ul>
 
       <hr/>
@@ -58,6 +74,9 @@ const AppRouter = () => (
 
         {/* If someone visits '/help', render the Help Component */}
         <Route path="/help" component={Help}/>
+
+        {/* If someone visits '/expense/:id', render the Expense Component with that expense id's information */}
+        <Route path="/expense/:id" component={Expense}/>
       </Switch>
     </div>
   </BrowserRouter>
