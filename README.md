@@ -1,25 +1,5 @@
-# Webpack config for React front-end app
+# Webpack config for React, with Router, front-end app
 I built this so I wouldn't have to create a new webpack.config file everytime I wanted to start a new React app. I can just download this repo and I'm ready to go. Below are the pacakges that I've installed and configured:
-
-webpack
-webpack-cli
-webpack-dev-server
-html-webpack-plugin
-css-loader
-style-loader
-sass-loader
-node-sass
-normalize.css
-react
-react-dom
-babel-core
-babel-loader
-babel-preset-env
-babel-preset-react
-babel-plugin-transform-class-properties
-babel-polyfill
-babel-plugin-transform-object-rest-spread
-mini-css-extract-plugin
 
 ### And here are the commands I used:
 
